@@ -7,13 +7,9 @@ import javax.swing.JButton;
 
 public class Button {
 	
-	int buttonID;
-	JButton button;
 	COLOR color;
 
-	public Button(int buttonID, JButton button) {
-		this.buttonID = buttonID;
-		this.button = button;
+	public Button() {
 		this.color = COLOR.gray;
 	}
 	

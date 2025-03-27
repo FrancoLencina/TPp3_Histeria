@@ -8,18 +8,21 @@ import javax.swing.JButton;
 
 public class ButtonController {
 
-	Map<Integer, Button> buttonMap;
+	//Map<Integer, Button> buttonMap;
+	Button[][] buttonMatrix;
 	int boardSize;
 	
 	public ButtonController(int boardSize) {
-		buttonMap = new HashMap<Integer, Button>();
+		//buttonMap = new HashMap<Integer, Button>();
 		this.boardSize = boardSize;
+		this.buttonMatrix = new Button[boardSize][boardSize];
 	}
 	
 	
-	public void activeButton(String JButtonName){
+	public void activeButton(int row, int column){
 		
-		Button button = buttonMap.get(Integer.parseInt(JButtonName));
+		//Button button = buttonMap.get(Integer.parseInt(JButtonName));
+		Button button = buttonMatrix[row][column];
 		button.changeColor();
 		if (colorMatch(button,neighborhood(button))) {
 			neighborsOFF(button);
@@ -27,9 +30,10 @@ public class ButtonController {
 		
 	}
 	
-	public void addNewButton(String name, JButton button) {
-		Button newButton = new Button(Integer.parseInt(name), button);
-		buttonMap.put(newButton.buttonID, newButton);
+	public void addNewButton(int row, int column) {
+		Button newButton = new Button();
+		buttonMatrix[row][column] = newButton;
+		//buttonMap.put(newButton.buttonID, newButton);
 	}
 
 	private ArrayList<Integer> neighborhood(Button button){
